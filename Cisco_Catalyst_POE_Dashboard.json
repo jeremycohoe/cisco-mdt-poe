@@ -1,0 +1,2675 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_MDT_GRPC_C9800",
+      "label": "mdt_grpc_c9800",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "8.2.5"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph (old)",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1666318388775,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 0,
+        "y": 0
+      },
+      "id": 28,
+      "options": {
+        "content": "# PowerRangers \n\n![Image](https://variety.com/wp-content/uploads/2017/03/mighty-morphin-power-rangers.jpg)\t\n\n           ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.2.5",
+      "title": "We are the",
+      "type": "text"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "description": "Power saved due to Power save mode",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "id": 39,
+      "interval": "10s",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "spread"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Average power saved due to Power Save Mode",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "description": "Power saved due to Power save mode",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-orange",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kwatth"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 6,
+        "y": 8
+      },
+      "id": 41,
+      "interval": "10s",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "alias": "lala",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "spread"
+              },
+              {
+                "params": [
+                  "* $__interval_ms/1000/1000/2"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Device Power SPREAD",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "description": "Power saved due to Power save mode",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 5,
+        "x": 12,
+        "y": 8
+      },
+      "id": 44,
+      "interval": "10s",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "spread"
+              },
+              {
+                "params": [
+                  "* $__interval_ms/1000/1000/2*1.05"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Dollars Saved for this Switch",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "description": "Power saved due to Power save mode",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "max": 0,
+          "noValue": "CO2 kg",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 5,
+        "x": 17,
+        "y": 8
+      },
+      "id": 45,
+      "interval": "10s",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "groupBy": [],
+          "hide": true,
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "spread"
+              },
+              {
+                "params": [
+                  "* $__interval_ms/1000/1000/2*1.05"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CO2 Saved",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 36,
+      "panels": [],
+      "title": "Switch Total",
+      "type": "row"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 22,
+        "x": 0,
+        "y": 18
+      },
+      "id": 37,
+      "interval": "10s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "alias": "Consumed Power",
+          "groupBy": [
+            {
+              "params": [
+                "10m"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Power Consumed - grouped in 10 min intervals",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": false
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "left",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 22,
+        "x": 0,
+        "y": 28
+      },
+      "id": 43,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_intf_name",
+          "groupBy": [
+            {
+              "params": [
+                "30m"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "intf_name"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "power_consumption"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "intf_name",
+              "operator": "=~",
+              "value": "/^$Interface$/"
+            },
+            {
+              "condition": "AND",
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "title": "Per port consumption",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 38,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "max",
+            "min",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [
+            {
+              "params": [
+                "15m"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "power_consumption"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "condition": "AND",
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            },
+            {
+              "condition": "AND",
+              "key": "intf_name",
+              "operator": "=~",
+              "value": "/^$Interface$/"
+            }
+          ]
+        }
+      ],
+      "title": "Port Power Consumption - NS edit",
+      "type": "timeseries"
+    },
+    {
+      "aliasColors": {
+        "Processor free": "yellow",
+        "Processor used": "yellow"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 15,
+        "w": 11,
+        "x": 12,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "interval": "10s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "[[tag_name]] $col",
+          "groupBy": [
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "available_power"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "consumed_system_power"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "power_budget"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "power_allocated"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "consumed_poe_power"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$switch$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Device Power",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:99",
+          "format": "watt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:100",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 34,
+      "panels": [],
+      "title": "Details",
+      "type": "row"
+    },
+    {
+      "datasource": "${DS_MDT_GRPC_C9800}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "intf_name 1"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 226
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 22,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Device Name"
+          }
+        ]
+      },
+      "pluginVersion": "8.2.5",
+      "targets": [
+        {
+          "hide": false,
+          "query": "SELECT local_intf_name as intf_name, device_name, source FROM \"Cisco-IOS-XE-cdp-oper:cdp-neighbor-details/cdp-neighbor-detail\" WHERE (\"source\" =~ /^$switch$/) group by *",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "table"
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select power_consumption,max_power_drawn, last(\"device_name\") AS \"intf_name\" from \"Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail\"  WHERE (\"source\" =~ /^$switch$/) group by *",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Map CDP and PoE",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "intf_name"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "admin_police": true,
+              "admin_state": true,
+              "chassis_num": true,
+              "conn_type": true,
+              "cutoff_power_police": true,
+              "device_detected": true,
+              "device_id": true,
+              "device_name 1": false,
+              "device_name 2": false,
+              "discovery": true,
+              "fast_poe_enabled": true,
+              "four_pair_pd_arch": true,
+              "four_pair_poe_enabled": true,
+              "four_pair_poe_supported": true,
+              "host": true,
+              "host 2": true,
+              "intf_name 1": false,
+              "intf_name 2": false,
+              "lldp_mdi_rx/auto_class_comp": true,
+              "lldp_mdi_rx/auto_class_req": true,
+              "lldp_mdi_rx/dual_sig_pwr_class_mode_a": true,
+              "lldp_mdi_rx/dual_sig_pwr_class_mode_b": true,
+              "lldp_mdi_rx/length": true,
+              "lldp_mdi_rx/pd_4pid": true,
+              "lldp_mdi_rx/pd_pwred_status": true,
+              "lldp_mdi_rx/pd_req_pwr_mode_a": true,
+              "lldp_mdi_rx/pd_req_pwr_mode_b": true,
+              "lldp_mdi_rx/power_allocated": true,
+              "lldp_mdi_rx/power_down_time": true,
+              "lldp_mdi_rx/power_priority": true,
+              "lldp_mdi_rx/power_requested": true,
+              "lldp_mdi_rx/power_source": true,
+              "lldp_mdi_rx/power_type": true,
+              "lldp_mdi_rx/pse_alloc_pwr_mode_a": true,
+              "lldp_mdi_rx/pse_alloc_pwr_mode_b": true,
+              "lldp_mdi_rx/pse_auto_class_support": true,
+              "lldp_mdi_rx/pse_max_available_power": true,
+              "lldp_mdi_rx/pse_pwr_pair_ext": true,
+              "lldp_mdi_rx/pse_pwring_status": true,
+              "lldp_mdi_rx/pwr_down_req": true,
+              "lldp_mdi_rx/pwr_ss_class_ext": true,
+              "lldp_mdi_rx/pwr_type_ext": true,
+              "lldp_mdi_tx/auto_class_comp": true,
+              "lldp_mdi_tx/auto_class_req": true,
+              "lldp_mdi_tx/dual_sig_pwr_class_mode_a": true,
+              "lldp_mdi_tx/dual_sig_pwr_class_mode_b": true,
+              "lldp_mdi_tx/length": true,
+              "lldp_mdi_tx/pd_4pid": true,
+              "lldp_mdi_tx/pd_pwred_status": true,
+              "lldp_mdi_tx/pd_req_pwr_mode_a": true,
+              "lldp_mdi_tx/pd_req_pwr_mode_b": true,
+              "lldp_mdi_tx/power_allocated": true,
+              "lldp_mdi_tx/power_down_time": true,
+              "lldp_mdi_tx/power_priority": true,
+              "lldp_mdi_tx/power_requested": true,
+              "lldp_mdi_tx/power_source": true,
+              "lldp_mdi_tx/power_type": true,
+              "lldp_mdi_tx/pse_alloc_pwr_mode_a": true,
+              "lldp_mdi_tx/pse_alloc_pwr_mode_b": true,
+              "lldp_mdi_tx/pse_auto_class_support": true,
+              "lldp_mdi_tx/pse_max_available_power": true,
+              "lldp_mdi_tx/pse_pwr_pair_ext": true,
+              "lldp_mdi_tx/pse_pwring_status": true,
+              "lldp_mdi_tx/pwr_down_req": true,
+              "lldp_mdi_tx/pwr_ss_class_ext": true,
+              "lldp_mdi_tx/pwr_type_ext": true,
+              "lldp_med_mdi_rx/power_priority": true,
+              "lldp_med_mdi_rx/power_source": true,
+              "lldp_med_mdi_rx/power_type": true,
+              "lldp_med_mdi_tx/power_priority": true,
+              "lldp_med_mdi_tx/power_source": true,
+              "lldp_med_mdi_tx/power_type": true,
+              "meter_start_time": true,
+              "metered_energy_value": true,
+              "module_id": true,
+              "oper_police": true,
+              "oper_power": true,
+              "oper_priority": true,
+              "oper_state": true,
+              "over_current_counter": true,
+              "path": true,
+              "pd_class": true,
+              "perpetual_poe_enabled": true,
+              "poe_intf_enabled": true,
+              "police": true,
+              "post_done": true,
+              "power_denied_counter": true,
+              "power_from_pse": true,
+              "power_negotiation_used": true,
+              "power_used": true,
+              "prot_pd_highest_req_pwr": true,
+              "prot_req_state": true,
+              "pwr_state": true,
+              "short_current_counter": true,
+              "signal_pair_data/assigned_pd_class": true,
+              "signal_pair_data/oper_power": true,
+              "signal_pair_data/oper_state": true,
+              "signal_pair_data/pd_class": true,
+              "signal_pair_data/power_from_pse": true,
+              "signal_pair_data/power_to_pd": true,
+              "source": true,
+              "spare_pair_data/assigned_pd_class": true,
+              "spare_pair_data/oper_power": true,
+              "spare_pair_data/oper_state": true,
+              "spare_pair_data/pd_class": true,
+              "spare_pair_data/power_from_pse": true,
+              "spare_pair_data/power_to_pd": true,
+              "subscription": true,
+              "upoe_plus_enabled": true
+            },
+            "indexByName": {
+              "Time": 10,
+              "device_id": 11,
+              "device_name": 0,
+              "host": 2,
+              "intf_name 1": 9,
+              "intf_name 2": 6,
+              "max_power_drawn": 3,
+              "path": 4,
+              "power_consumption": 1,
+              "source": 12,
+              "source 1": 7,
+              "source 2": 8,
+              "subscription": 5
+            },
+            "renameByName": {
+              "device_name": "Device Name",
+              "device_name 1": "Device name",
+              "device_name 2": "Device Type",
+              "intf_name 1": "Switch interface",
+              "intf_name 2": "Device Type",
+              "power_consumption": "Current Power consumption"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 64
+      },
+      "id": 32,
+      "panels": [],
+      "title": "Ignore beow",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
+      "id": 26,
+      "panels": [
+        {
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "filterable": true
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "intf_name 1"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 226
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "interface"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 219
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 88
+          },
+          "id": 20,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "interface"
+              }
+            ]
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select *, last(\"device_name\") AS \"intf_name\" from \"Cisco-IOS-XE-cdp-oper:cdp-neighbor-details/cdp-neighbor-detail\"  WHERE (\"source\" =~ /^$switch$/)  group by *",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "CDP",
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "admin_police": true,
+                  "admin_state": true,
+                  "adv_version": true,
+                  "chassis_num": true,
+                  "conn_type": true,
+                  "cutoff_power_police": true,
+                  "device_detected": true,
+                  "device_id": true,
+                  "discovery": true,
+                  "duplex": true,
+                  "fast_poe_enabled": true,
+                  "four_pair_pd_arch": true,
+                  "four_pair_poe_enabled": true,
+                  "four_pair_poe_supported": true,
+                  "hello_message/payload_len": true,
+                  "host": true,
+                  "intf_name": true,
+                  "intf_name 2": true,
+                  "lldp_mdi_rx/auto_class_comp": true,
+                  "lldp_mdi_rx/auto_class_req": true,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_a": true,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_b": true,
+                  "lldp_mdi_rx/length": true,
+                  "lldp_mdi_rx/pd_4pid": true,
+                  "lldp_mdi_rx/pd_pwred_status": true,
+                  "lldp_mdi_rx/pd_req_pwr_mode_a": true,
+                  "lldp_mdi_rx/pd_req_pwr_mode_b": true,
+                  "lldp_mdi_rx/power_allocated": true,
+                  "lldp_mdi_rx/power_down_time": true,
+                  "lldp_mdi_rx/power_priority": true,
+                  "lldp_mdi_rx/power_requested": true,
+                  "lldp_mdi_rx/power_source": true,
+                  "lldp_mdi_rx/power_type": true,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_a": true,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_b": true,
+                  "lldp_mdi_rx/pse_auto_class_support": true,
+                  "lldp_mdi_rx/pse_max_available_power": true,
+                  "lldp_mdi_rx/pse_pwr_pair_ext": true,
+                  "lldp_mdi_rx/pse_pwring_status": true,
+                  "lldp_mdi_rx/pwr_down_req": true,
+                  "lldp_mdi_rx/pwr_ss_class_ext": true,
+                  "lldp_mdi_rx/pwr_type_ext": true,
+                  "lldp_mdi_tx/auto_class_comp": true,
+                  "lldp_mdi_tx/auto_class_req": true,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_a": true,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_b": true,
+                  "lldp_mdi_tx/length": true,
+                  "lldp_mdi_tx/pd_4pid": true,
+                  "lldp_mdi_tx/pd_pwred_status": true,
+                  "lldp_mdi_tx/pd_req_pwr_mode_a": true,
+                  "lldp_mdi_tx/pd_req_pwr_mode_b": true,
+                  "lldp_mdi_tx/power_allocated": true,
+                  "lldp_mdi_tx/power_down_time": true,
+                  "lldp_mdi_tx/power_priority": true,
+                  "lldp_mdi_tx/power_requested": true,
+                  "lldp_mdi_tx/power_source": true,
+                  "lldp_mdi_tx/power_type": true,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_a": true,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_b": true,
+                  "lldp_mdi_tx/pse_auto_class_support": true,
+                  "lldp_mdi_tx/pse_max_available_power": true,
+                  "lldp_mdi_tx/pse_pwr_pair_ext": true,
+                  "lldp_mdi_tx/pse_pwring_status": true,
+                  "lldp_mdi_tx/pwr_down_req": true,
+                  "lldp_mdi_tx/pwr_ss_class_ext": true,
+                  "lldp_mdi_tx/pwr_type_ext": true,
+                  "lldp_med_mdi_rx/power_priority": true,
+                  "lldp_med_mdi_rx/power_source": true,
+                  "lldp_med_mdi_rx/power_type": true,
+                  "lldp_med_mdi_tx/power_priority": true,
+                  "lldp_med_mdi_tx/power_source": true,
+                  "lldp_med_mdi_tx/power_type": true,
+                  "meter_start_time": true,
+                  "metered_energy_value": true,
+                  "module_id": true,
+                  "native_vlan": true,
+                  "oper_police": true,
+                  "oper_power": true,
+                  "oper_priority": true,
+                  "oper_state": true,
+                  "over_current_counter": true,
+                  "path": true,
+                  "pd_class": true,
+                  "perpetual_poe_enabled": true,
+                  "poe_intf_enabled": true,
+                  "police": true,
+                  "port_id": true,
+                  "post_done": true,
+                  "power": true,
+                  "power_available/power_available": true,
+                  "power_available/power_man_id": true,
+                  "power_available/power_man_level": true,
+                  "power_available/power_request_id": true,
+                  "power_denied_counter": true,
+                  "power_from_pse": true,
+                  "power_negotiation_used": true,
+                  "power_request/power_request_level": true,
+                  "power_used": true,
+                  "prot_pd_highest_req_pwr": true,
+                  "prot_req_state": true,
+                  "pwr_state": true,
+                  "short_current_counter": true,
+                  "signal_pair_data/assigned_pd_class": true,
+                  "signal_pair_data/oper_power": true,
+                  "signal_pair_data/oper_state": true,
+                  "signal_pair_data/pd_class": true,
+                  "signal_pair_data/power_from_pse": true,
+                  "signal_pair_data/power_to_pd": true,
+                  "source": true,
+                  "spare_pair/spare_pair_detection_required": true,
+                  "spare_pair/spare_pair_pd_config": true,
+                  "spare_pair/spare_pair_poe": true,
+                  "spare_pair/spare_pair_pse_operational": true,
+                  "spare_pair_data/assigned_pd_class": true,
+                  "spare_pair_data/oper_power": true,
+                  "spare_pair_data/oper_state": true,
+                  "spare_pair_data/pd_class": true,
+                  "spare_pair_data/power_from_pse": true,
+                  "spare_pair_data/power_to_pd": true,
+                  "subscription": true,
+                  "table_id": true,
+                  "unidirectional_mode": true,
+                  "upoe_plus_enabled": true,
+                  "vvid": true,
+                  "vvid_tag": true
+                },
+                "indexByName": {
+                  "Time": 1,
+                  "adv_version": 8,
+                  "capability": 9,
+                  "device_id": 7,
+                  "device_name": 3,
+                  "duplex": 10,
+                  "hello_message/payload_len": 11,
+                  "host": 2,
+                  "intf_name": 37,
+                  "ip_address": 12,
+                  "ipv6_address": 13,
+                  "local_intf_name": 0,
+                  "mgmt_address": 14,
+                  "native_vlan": 15,
+                  "neighbor_identifier": 16,
+                  "neighbor_port_mac": 17,
+                  "path": 4,
+                  "platform_name": 18,
+                  "port_id": 19,
+                  "power": 20,
+                  "power_available/power_available": 21,
+                  "power_available/power_man_id": 22,
+                  "power_available/power_man_level": 23,
+                  "power_available/power_request_id": 24,
+                  "power_request/power_man_id": 25,
+                  "power_request/power_request_id": 26,
+                  "power_request/power_request_level": 27,
+                  "source": 5,
+                  "spare_pair/spare_pair_detection_required": 28,
+                  "spare_pair/spare_pair_pd_config": 29,
+                  "spare_pair/spare_pair_poe": 30,
+                  "spare_pair/spare_pair_pse_operational": 31,
+                  "subscription": 6,
+                  "table_id": 32,
+                  "unidirectional_mode": 33,
+                  "version": 34,
+                  "vvid": 35,
+                  "vvid_tag": 36
+                },
+                "renameByName": {
+                  "device_name": "device",
+                  "intf_name 1": "interface",
+                  "local_intf_name": "interface"
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "filterable": true
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "intf_name 1"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 226
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 96
+          },
+          "id": 13,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "interface"
+              }
+            ]
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select *, last(\"device_name\") AS \"intf_name\" from \"Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail\"  WHERE (\"source\" =~ /^$switch$/) group by *",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "POE Interface",
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "admin_police": true,
+                  "admin_state": true,
+                  "chassis_num": true,
+                  "conn_type": true,
+                  "cutoff_power_police": true,
+                  "device_detected": true,
+                  "discovery": true,
+                  "fast_poe_enabled": true,
+                  "four_pair_pd_arch": true,
+                  "four_pair_poe_enabled": true,
+                  "four_pair_poe_supported": true,
+                  "host": true,
+                  "intf_name 2": true,
+                  "lldp_mdi_rx/auto_class_comp": true,
+                  "lldp_mdi_rx/auto_class_req": true,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_a": true,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_b": true,
+                  "lldp_mdi_rx/length": true,
+                  "lldp_mdi_rx/pd_4pid": true,
+                  "lldp_mdi_rx/pd_pwred_status": true,
+                  "lldp_mdi_rx/pd_req_pwr_mode_a": true,
+                  "lldp_mdi_rx/pd_req_pwr_mode_b": true,
+                  "lldp_mdi_rx/power_allocated": true,
+                  "lldp_mdi_rx/power_down_time": true,
+                  "lldp_mdi_rx/power_priority": true,
+                  "lldp_mdi_rx/power_requested": true,
+                  "lldp_mdi_rx/power_source": true,
+                  "lldp_mdi_rx/power_type": true,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_a": true,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_b": true,
+                  "lldp_mdi_rx/pse_auto_class_support": true,
+                  "lldp_mdi_rx/pse_max_available_power": true,
+                  "lldp_mdi_rx/pse_pwr_pair_ext": true,
+                  "lldp_mdi_rx/pse_pwring_status": true,
+                  "lldp_mdi_rx/pwr_down_req": true,
+                  "lldp_mdi_rx/pwr_ss_class_ext": true,
+                  "lldp_mdi_rx/pwr_type_ext": true,
+                  "lldp_mdi_tx/auto_class_comp": true,
+                  "lldp_mdi_tx/auto_class_req": true,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_a": true,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_b": true,
+                  "lldp_mdi_tx/length": true,
+                  "lldp_mdi_tx/pd_4pid": true,
+                  "lldp_mdi_tx/pd_pwred_status": true,
+                  "lldp_mdi_tx/pd_req_pwr_mode_a": true,
+                  "lldp_mdi_tx/pd_req_pwr_mode_b": true,
+                  "lldp_mdi_tx/power_allocated": true,
+                  "lldp_mdi_tx/power_down_time": true,
+                  "lldp_mdi_tx/power_priority": true,
+                  "lldp_mdi_tx/power_requested": true,
+                  "lldp_mdi_tx/power_source": true,
+                  "lldp_mdi_tx/power_type": true,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_a": true,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_b": true,
+                  "lldp_mdi_tx/pse_auto_class_support": true,
+                  "lldp_mdi_tx/pse_max_available_power": true,
+                  "lldp_mdi_tx/pse_pwr_pair_ext": true,
+                  "lldp_mdi_tx/pse_pwring_status": true,
+                  "lldp_mdi_tx/pwr_down_req": true,
+                  "lldp_mdi_tx/pwr_ss_class_ext": true,
+                  "lldp_mdi_tx/pwr_type_ext": true,
+                  "lldp_med_mdi_rx/power_priority": true,
+                  "lldp_med_mdi_rx/power_source": true,
+                  "lldp_med_mdi_rx/power_type": true,
+                  "lldp_med_mdi_tx/power_priority": true,
+                  "lldp_med_mdi_tx/power_source": true,
+                  "lldp_med_mdi_tx/power_type": true,
+                  "meter_start_time": true,
+                  "metered_energy_value": true,
+                  "module_id": true,
+                  "oper_police": true,
+                  "oper_power": true,
+                  "oper_priority": true,
+                  "oper_state": true,
+                  "over_current_counter": true,
+                  "path": true,
+                  "pd_class": true,
+                  "perpetual_poe_enabled": true,
+                  "poe_intf_enabled": true,
+                  "police": true,
+                  "post_done": true,
+                  "power_denied_counter": true,
+                  "power_from_pse": true,
+                  "power_negotiation_used": true,
+                  "power_used": true,
+                  "prot_pd_highest_req_pwr": true,
+                  "prot_req_state": true,
+                  "pwr_state": true,
+                  "short_current_counter": true,
+                  "signal_pair_data/assigned_pd_class": true,
+                  "signal_pair_data/oper_power": true,
+                  "signal_pair_data/oper_state": true,
+                  "signal_pair_data/pd_class": true,
+                  "signal_pair_data/power_from_pse": true,
+                  "signal_pair_data/power_to_pd": true,
+                  "source": true,
+                  "spare_pair_data/assigned_pd_class": true,
+                  "spare_pair_data/oper_power": true,
+                  "spare_pair_data/oper_state": true,
+                  "spare_pair_data/pd_class": true,
+                  "spare_pair_data/power_from_pse": true,
+                  "spare_pair_data/power_to_pd": true,
+                  "subscription": true,
+                  "upoe_plus_enabled": true
+                },
+                "indexByName": {
+                  "Time": 1,
+                  "admin_police": 10,
+                  "admin_state": 11,
+                  "chassis_num": 12,
+                  "conn_type": 13,
+                  "cutoff_power_police": 14,
+                  "device_detected": 15,
+                  "device_name": 3,
+                  "discovery": 16,
+                  "fast_poe_enabled": 17,
+                  "four_pair_pd_arch": 18,
+                  "four_pair_poe_enabled": 19,
+                  "four_pair_poe_supported": 20,
+                  "host": 2,
+                  "intf_name 1": 0,
+                  "intf_name 2": 110,
+                  "lldp_mdi_rx/auto_class_comp": 21,
+                  "lldp_mdi_rx/auto_class_req": 22,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_a": 23,
+                  "lldp_mdi_rx/dual_sig_pwr_class_mode_b": 24,
+                  "lldp_mdi_rx/length": 25,
+                  "lldp_mdi_rx/pd_4pid": 26,
+                  "lldp_mdi_rx/pd_pwred_status": 27,
+                  "lldp_mdi_rx/pd_req_pwr_mode_a": 28,
+                  "lldp_mdi_rx/pd_req_pwr_mode_b": 29,
+                  "lldp_mdi_rx/power_allocated": 30,
+                  "lldp_mdi_rx/power_down_time": 31,
+                  "lldp_mdi_rx/power_priority": 32,
+                  "lldp_mdi_rx/power_requested": 33,
+                  "lldp_mdi_rx/power_source": 34,
+                  "lldp_mdi_rx/power_type": 35,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_a": 36,
+                  "lldp_mdi_rx/pse_alloc_pwr_mode_b": 37,
+                  "lldp_mdi_rx/pse_auto_class_support": 38,
+                  "lldp_mdi_rx/pse_max_available_power": 39,
+                  "lldp_mdi_rx/pse_pwr_pair_ext": 40,
+                  "lldp_mdi_rx/pse_pwring_status": 41,
+                  "lldp_mdi_rx/pwr_down_req": 42,
+                  "lldp_mdi_rx/pwr_ss_class_ext": 43,
+                  "lldp_mdi_rx/pwr_type_ext": 44,
+                  "lldp_mdi_tx/auto_class_comp": 45,
+                  "lldp_mdi_tx/auto_class_req": 46,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_a": 47,
+                  "lldp_mdi_tx/dual_sig_pwr_class_mode_b": 48,
+                  "lldp_mdi_tx/length": 49,
+                  "lldp_mdi_tx/pd_4pid": 50,
+                  "lldp_mdi_tx/pd_pwred_status": 51,
+                  "lldp_mdi_tx/pd_req_pwr_mode_a": 52,
+                  "lldp_mdi_tx/pd_req_pwr_mode_b": 53,
+                  "lldp_mdi_tx/power_allocated": 54,
+                  "lldp_mdi_tx/power_down_time": 55,
+                  "lldp_mdi_tx/power_priority": 56,
+                  "lldp_mdi_tx/power_requested": 57,
+                  "lldp_mdi_tx/power_source": 58,
+                  "lldp_mdi_tx/power_type": 59,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_a": 60,
+                  "lldp_mdi_tx/pse_alloc_pwr_mode_b": 61,
+                  "lldp_mdi_tx/pse_auto_class_support": 62,
+                  "lldp_mdi_tx/pse_max_available_power": 63,
+                  "lldp_mdi_tx/pse_pwr_pair_ext": 64,
+                  "lldp_mdi_tx/pse_pwring_status": 65,
+                  "lldp_mdi_tx/pwr_down_req": 66,
+                  "lldp_mdi_tx/pwr_ss_class_ext": 67,
+                  "lldp_mdi_tx/pwr_type_ext": 68,
+                  "lldp_med_mdi_rx/power_priority": 69,
+                  "lldp_med_mdi_rx/power_source": 70,
+                  "lldp_med_mdi_rx/power_type": 71,
+                  "lldp_med_mdi_tx/power_priority": 72,
+                  "lldp_med_mdi_tx/power_source": 73,
+                  "lldp_med_mdi_tx/power_type": 74,
+                  "max_power_drawn": 5,
+                  "meter_start_time": 75,
+                  "metered_energy_value": 76,
+                  "module_id": 77,
+                  "oper_police": 78,
+                  "oper_power": 79,
+                  "oper_priority": 80,
+                  "oper_state": 81,
+                  "over_current_counter": 82,
+                  "path": 7,
+                  "pd_class": 83,
+                  "perpetual_poe_enabled": 84,
+                  "poe_intf_enabled": 85,
+                  "police": 86,
+                  "post_done": 87,
+                  "power_admin_max": 4,
+                  "power_consumption": 6,
+                  "power_denied_counter": 88,
+                  "power_from_pse": 89,
+                  "power_negotiation_used": 90,
+                  "power_to_pd": 91,
+                  "power_used": 92,
+                  "prot_pd_highest_req_pwr": 93,
+                  "prot_req_state": 94,
+                  "pwr_state": 95,
+                  "short_current_counter": 96,
+                  "signal_pair_data/assigned_pd_class": 97,
+                  "signal_pair_data/oper_power": 98,
+                  "signal_pair_data/oper_state": 99,
+                  "signal_pair_data/pd_class": 100,
+                  "signal_pair_data/power_from_pse": 101,
+                  "signal_pair_data/power_to_pd": 102,
+                  "source": 8,
+                  "spare_pair_data/assigned_pd_class": 103,
+                  "spare_pair_data/oper_power": 104,
+                  "spare_pair_data/oper_state": 105,
+                  "spare_pair_data/pd_class": 106,
+                  "spare_pair_data/power_from_pse": 107,
+                  "spare_pair_data/power_to_pd": 108,
+                  "subscription": 9,
+                  "upoe_plus_enabled": 109
+                },
+                "renameByName": {
+                  "device_name": "device",
+                  "intf_name 1": "interface"
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "celsius"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 104
+          },
+          "id": 4,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "alias": "Inlet Temp",
+              "groupBy": [],
+              "measurement": "Cisco-IOS-XE-environment-oper:environment-sensors/environment-sensor",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "current_reading"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "name",
+                  "operator": "=",
+                  "value": "Inlet Temp Sensor"
+                },
+                {
+                  "condition": "AND",
+                  "key": "source",
+                  "operator": "=~",
+                  "value": "/^$switch$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Inlet Temp",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "celsius"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 3,
+            "y": 104
+          },
+          "id": 19,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "alias": "HotSpot Temp",
+              "groupBy": [],
+              "measurement": "Cisco-IOS-XE-environment-oper:environment-sensors/environment-sensor",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "current_reading"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "name",
+                  "operator": "=",
+                  "value": "Outlet Temp Sensor"
+                },
+                {
+                  "condition": "AND",
+                  "key": "source",
+                  "operator": "=~",
+                  "value": "/^$switch$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Outlet Temp",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "celsius"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 6,
+            "y": 104
+          },
+          "id": 10,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "alias": "HotSpot Temp",
+              "groupBy": [],
+              "measurement": "Cisco-IOS-XE-environment-oper:environment-sensors/environment-sensor",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "current_reading"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "name",
+                  "operator": "=",
+                  "value": "HotSpot Temp Sensor"
+                },
+                {
+                  "condition": "AND",
+                  "key": "source",
+                  "operator": "=~",
+                  "value": "/^$switch$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "HotSpot Temp",
+          "type": "stat"
+        },
+        {
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "watt"
+            },
+            "overrides": [
+              {
+                "__systemRef": "hideSeriesFrom",
+                "matcher": {
+                  "id": "byNames",
+                  "options": {
+                    "mode": "exclude",
+                    "names": [
+                      "power_consumption"
+                    ],
+                    "prefix": "All except:",
+                    "readOnly": true
+                  }
+                },
+                "properties": [
+                  {
+                    "id": "custom.hideFrom",
+                    "value": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 15,
+            "w": 11,
+            "x": 0,
+            "y": 107
+          },
+          "id": 16,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "max",
+                "min",
+                "mean"
+              ],
+              "displayMode": "table",
+              "placement": "right"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$col",
+              "groupBy": [],
+              "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-port-detail",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "power_consumption"
+                    ],
+                    "type": "field"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "max_power_drawn"
+                    ],
+                    "type": "field"
+                  }
+                ],
+                [
+                  {
+                    "params": [
+                      "power_used"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "intf_name",
+                  "operator": "=~",
+                  "value": "/^$Interface$/"
+                },
+                {
+                  "condition": "AND",
+                  "key": "source",
+                  "operator": "=~",
+                  "value": "/^$switch$/"
+                }
+              ]
+            }
+          ],
+          "title": "Port Power Consumption",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "${DS_MDT_GRPC_C9800}",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 15,
+            "w": 11,
+            "x": 1,
+            "y": 122
+          },
+          "id": 24,
+          "interval": "10s",
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "pluginVersion": "8.2.5",
+          "targets": [
+            {
+              "alias": "[[tag_name]] $col",
+              "groupBy": [
+                {
+                  "params": [
+                    "name"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "Cisco-IOS-XE-poe-oper:poe-oper-data/poe-switch",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "consumed_poe_power"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "source",
+                  "operator": "=~",
+                  "value": "/^$switch$/"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Device Power",
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": false
+                },
+                "indexByName": {},
+                "renameByName": {}
+              }
+            }
+          ],
+          "type": "timeseries"
+        }
+      ],
+      "title": "Ignore",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 32,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_MDT_GRPC_C9800}",
+        "definition": "show tag values with key = \"intf_name\" WHERE (\"source\" =~ /^$switch$/)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "Interface",
+        "options": [],
+        "query": "show tag values with key = \"intf_name\" WHERE (\"source\" =~ /^$switch$/)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 3,
+        "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_MDT_GRPC_C9800}",
+        "definition": "show tag values with key = \"source\"",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "switch",
+        "options": [],
+        "query": "show tag values with key = \"source\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Catalyst POE Dashboard",
+  "uid": "UIMfad44k",
+  "version": 68
+}

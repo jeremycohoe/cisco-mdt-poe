@@ -86,11 +86,11 @@ Please add example on how to add the 2 subs with Python
 
 Please add example :)
 
-# Grafana dashboard
+# Grafana dashboard #17238
 
 A simple and example dashboard has been provided to visualize the POE telemetry data over time.
 
-This dashboard can be copied into any existing Grafana instance by importing the Dashboard ID from Grafana.com dashboard repository, or, by importing the dashboard.JSON file as part of this repository
+This dashboard can be copied into any existing Grafana instance by importing the Dashboard ID from Grafana.com dashboard repository, or, by importing the **Cisco_Catalyst_POE_Dashboard.json** file as part of this repository
 
 ![POE Grafana Dashboard](grafana-dashboard.png)
 
