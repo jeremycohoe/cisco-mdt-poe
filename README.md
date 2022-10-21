@@ -1,6 +1,18 @@
 # Cisco Catalyst POE 
 
-Details about monitoring the POE and power consumption and utilization on Cisco Catalyst IOS XE
+Details about monitoring the POE and power consumption and utilization on Cisco Catalyst IOS XE. 
+
+This use case relies on the TIG_MDT Docker container which has the Telegraf, InfluxDB, and Grafana toolset available from [The cisco-ios-xe-mdt repository](https://github.com/jeremycohoe/cisco-ios-xe-mdt/) on Github
+
+
+# Prerequisites
+
+You need Cisco Catalyst 9300 POE 
+
+Some POE devices connected too
+
+Minimum IOS XE Software release: _____ ?
+
 
 # POE YANG
 
