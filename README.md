@@ -88,6 +88,8 @@ Please add example :)
 
 # Grafana dashboard #17238
 
+See details about the [Cisco Catalyst POE Dashboard #17238 on Grafana.com](https://github.com/jeremycohoe/cisco-ios-xe-mdt/blob/master/telegraf-grpc.cfg)
+
 A simple and example dashboard has been provided to visualize the POE telemetry data over time.
 
 This dashboard can be copied into any existing Grafana instance by importing the Dashboard ID from Grafana.com dashboard repository, or, by importing the **Cisco_Catalyst_POE_Dashboard.json** file as part of this repository
