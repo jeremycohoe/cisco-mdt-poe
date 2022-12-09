@@ -98,6 +98,57 @@ Please add example on how to add the 2 subs with Python
 
 Please add example :)
 
+# Embedded Event Manager (EEM) Applet to control POE
+
+The below 2 EEM Applets can be installed into the CLI running-configuration to automatically enable or disable POE power to the ports according to the timed schedule
+
+```
+! EEM POE example SelectivePowerOff
+no event manager applet SelectivePowerOff
+event manager applet SelectivePowerOff
+! Turn *OFF* POE power to the ports daily at 9PM: 0 21 * * *
+event timer cron name SelectivePowerOff cron-entry "0 21 * * *"
+! or
+! event none
+!
+ action 0.0 cli command "enable"
+ action 0.1 cli command "show power inline"
+ action 0.2 foreach line "$_cli_result" "\n"
+ action 1.1  regexp "^([^[:space:]]*)[[:space:]]*[^[:space:]]*[[:space:]]*on.*$" "$line" temp interface
+ action 1.2  if $_regexp_result eq 1
+ action 1.3   cli command "conf t"
+ action 1.4   cli command "interface $interface"
+ action 1.5   cli command "power inline never"
+ action 1.6   syslog msg "Turned off PoE on $interface"
+ action 1.7  end
+ action 2.1 end
+```
+
+Similar EEM Applet to power on the ports at some timed schedule
+
+```
+! EEM POE example SelectivePowerOn
+event manager applet SelectivePowerOn
+! Turn **ON** POE power to the ports daily at 6AM: 0 6 * * *
+event timer cron name SelectivePowerOn cron-entry "0 6 * * *"
+!
+! or
+!event none
+ action 0.0 cli command "enable"
+ action 0.1 cli command "show power inline"
+ action 0.2 foreach line "$_cli_result" "\n"
+ action 1.1  regexp "^([^[:space:]]*)[[:space:]]*off.*$" "$line" temp interface
+ action 1.2  if $_regexp_result eq 1
+ action 1.3   cli command "conf t"
+ action 1.4   cli command "interface $interface"
+ action 1.5   cli command "power inline auto"
+ action 1.6   syslog msg "Turned on PoE on $interface"
+ action 1.7  end
+ action 2.1 end
+```
+
+
+
 # Grafana dashboard #17238
 
 See details about the [Cisco Catalyst POE Dashboard #17238 on Grafana.com](https://github.com/jeremycohoe/cisco-ios-xe-mdt/blob/master/telegraf-grpc.cfg)
