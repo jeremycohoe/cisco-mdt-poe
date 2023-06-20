@@ -173,5 +173,29 @@ Post dashboard to Grafana.com and share ID
 
 Post dashboard JSON to Github too
 
+# IOS XE support for Cisco-IOS-XE-poe-oper.YANG
 Which IOS XE release do we first see support for the 7 leaf / 2 containers needed for this usecase ?
 
+With the initial release of Cisco IOS XE version **16.9** the POE Operational YANG data module was added and since has received several updates as new features and data points were added,
+
+
+```
+jcohoe@JCOHOE-M-C6NA xe % pwd
+/Users/jcohoe/yang/vendor/cisco/xe
+jcohoe@JCOHOE-M-C6NA xe % find . |grep poe-oper |grep -v "YANG_1.1" |grep -v cedge | sort
+./16101/Cisco-IOS-XE-poe-oper.yang
+./16111/Cisco-IOS-XE-poe-oper.yang
+./16121/Cisco-IOS-XE-poe-oper.yang
+./1691/Cisco-IOS-XE-poe-oper.yang
+./1693/Cisco-IOS-XE-poe-oper.yang
+./17101/Cisco-IOS-XE-poe-oper.yang
+./1711/Cisco-IOS-XE-poe-oper.yang
+./1721/Cisco-IOS-XE-poe-oper.yang
+./1731/Cisco-IOS-XE-poe-oper.yang
+./1741/Cisco-IOS-XE-poe-oper.yang
+./1751/Cisco-IOS-XE-poe-oper.yang
+./1761/Cisco-IOS-XE-poe-oper.yang
+./1771/Cisco-IOS-XE-poe-oper.yang
+./1781/Cisco-IOS-XE-poe-oper.yang
+./1791/Cisco-IOS-XE-poe-oper.yang
+```
